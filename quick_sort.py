@@ -3,7 +3,7 @@ def quick_sort(array):
         pivot = array[-1]
         left, mid, right = [], [], []
 
-        for i in range(len(array)):
+        for i in range(len(array)-1):
             if array[i] < pivot:
                 left.append(array[i])
             elif array[i] > pivot:
