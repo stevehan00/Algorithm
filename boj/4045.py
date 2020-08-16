@@ -1,44 +1,25 @@
-n = int(input())
-day = 1
-aaa = []
+n=int(input())
+day=0
 
-while n != 0:
-    lst = []
-    ans = 0
+while n!=0:
+    day+=1
+    l = []
 
-    for  i in range(n):
-        s, e = map(int, input().split())
-        lst.append((s, e))
-    
-    lst.sort(key=lambda x : (x[0], x[1]))
-    
-    cur_t, cur_m = 0, 0
-    for i in range(n):
-        if i == 0:
-            cur_t = lst[i][0]
-            cur_m += 30
-            ans += 1
-        else:
-            if cur_t >= lst[i][1]:
+    t = [0]*25
+
+    for _ in range(n):
+        l.append(list(map(int, input().split())))
+
+    l.sort(key=lambda x: x[1]-x[0])
+
+    for line in l:
+        for i in range(line[0],line[1]):
+            if t[i] == 2:
                 continue
-
-            if cur_t >= lst[i][0]:
-                if cur_m == 0:
-                    cur_m += 30
-                else:
-                    cur_t += 1
-                    cur_m = 0
-                ans += 1
             else:
-                cur_t = lst[i][0]
-                cur_m = 30
-                ans += 1
+                t[i]+=1
+                break
 
-    aaa.append((day, ans))
-    # print("On day",day,"Emma can attend as many as",ans,"parties.")
-    day += 1
-    n = int(input())
+    print('On day',day,'Emma can attend as many as',sum(t),'parties.')
 
-
-for i in aaa:
-    print(i)
+    n=int(input())
