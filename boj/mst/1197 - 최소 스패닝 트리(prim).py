@@ -14,7 +14,7 @@ def prim(start, edges):
     heapq.heapify(candidate_edges)
 
     while candidate_edges:
-        w, u, v = heapq.heappop(candidate_edges
+        w, u, v = heapq.heappop(candidate_edges)
         if v not in connected_nodes:
             connected_nodes.add(v)
             mst.append((w,u,v))
